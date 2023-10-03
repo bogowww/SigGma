@@ -1,3 +1,6 @@
+-- Criação do schema 'SigGma'
+CREATE SCHEMA IF NOT EXISTS siggma;
+
 -- Criação da tabela 'usuario'
 CREATE TABLE IF NOT EXISTS siggma.usuario (
   id INT AUTO_INCREMENT NOT NULL,
