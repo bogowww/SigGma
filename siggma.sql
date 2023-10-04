@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS `siggma`.`usuario` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NULL,
   `matricula` INT NULL,
+  `senha` VARCHAR(45) NULL,
   `tipoUsuario_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_usuario_tipoUsuario1`
