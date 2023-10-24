@@ -1,18 +1,4 @@
--- MySQL Workbench Forward Engineering
 
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
-
--- -----------------------------------------------------
--- Schema siggma
--- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema siggma
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `siggma` DEFAULT CHARACTER SET utf8 ;
-USE `siggma` ;
 
 -- -----------------------------------------------------
 -- Table `siggma`.`tipoUsuario`
@@ -20,8 +6,8 @@ USE `siggma` ;
 CREATE TABLE IF NOT EXISTS `siggma`.`tipoUsuario` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `descricao` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+  PRIMARY KEY (`id`));
+
 
 
 -- -----------------------------------------------------
@@ -34,13 +20,11 @@ CREATE TABLE IF NOT EXISTS `siggma`.`usuario` (
   `senha` VARCHAR(45) NULL,
   `tipoUsuario_id` INT NOT NULL,
   PRIMARY KEY (`idusuario`),
-  INDEX `fk_usuario_tipoUsuario1_idx` (`tipoUsuario_id` ASC) VISIBLE,
   CONSTRAINT `fk_usuario_tipoUsuario1`
     FOREIGN KEY (`tipoUsuario_id`)
     REFERENCES `siggma`.`tipoUsuario` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON UPDATE NO ACTION);
 
 
 -- -----------------------------------------------------
@@ -49,8 +33,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `siggma`.`chapa` (
   `idchapa` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NULL,
-  PRIMARY KEY (`idchapa`))
-ENGINE = InnoDB;
+  PRIMARY KEY (`idchapa`));
 
 
 -- -----------------------------------------------------
@@ -61,8 +44,6 @@ CREATE TABLE IF NOT EXISTS `siggma`.`voto` (
   `chapa_idchapa` INT NOT NULL,
   `usuario_idusuario` INT NOT NULL,
   PRIMARY KEY (`idvoto`),
-  INDEX `fk_voto_chapa1_idx` (`chapa_idchapa` ASC) VISIBLE,
-  INDEX `fk_voto_usuario1_idx` (`usuario_idusuario` ASC) VISIBLE,
   CONSTRAINT `fk_voto_chapa1`
     FOREIGN KEY (`chapa_idchapa`)
     REFERENCES `siggma`.`chapa` (`idchapa`)
@@ -72,8 +53,7 @@ CREATE TABLE IF NOT EXISTS `siggma`.`voto` (
     FOREIGN KEY (`usuario_idusuario`)
     REFERENCES `siggma`.`usuario` (`idusuario`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON UPDATE NO ACTION);
 
 
 -- -----------------------------------------------------
@@ -84,8 +64,6 @@ CREATE TABLE IF NOT EXISTS `siggma`.`membro` (
   `chapa_idchapa` INT NOT NULL,
   `usuario_idusuario` INT NOT NULL,
   PRIMARY KEY (`idmembro`, `chapa_idchapa`, `usuario_idusuario`),
-  INDEX `fk_chapa_has_usuario_usuario1_idx` (`usuario_idusuario` ASC) VISIBLE,
-  INDEX `fk_chapa_has_usuario_chapa1_idx` (`chapa_idchapa` ASC) VISIBLE,
   CONSTRAINT `fk_chapa_has_usuario_chapa1`
     FOREIGN KEY (`chapa_idchapa`)
     REFERENCES `siggma`.`chapa` (`idchapa`)
@@ -95,8 +73,7 @@ CREATE TABLE IF NOT EXISTS `siggma`.`membro` (
     FOREIGN KEY (`usuario_idusuario`)
     REFERENCES `siggma`.`usuario` (`idusuario`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON UPDATE NO ACTION);
 
 
 -- -----------------------------------------------------
@@ -109,13 +86,11 @@ CREATE TABLE IF NOT EXISTS `siggma`.`contribuicao` (
   `proposito` VARCHAR(45) NULL,
   `usuario_idusuario` INT NOT NULL,
   PRIMARY KEY (`idcontribuicao`),
-  INDEX `fk_contribuicao_usuario1_idx` (`usuario_idusuario` ASC) VISIBLE,
   CONSTRAINT `fk_contribuicao_usuario1`
     FOREIGN KEY (`usuario_idusuario`)
     REFERENCES `siggma`.`usuario` (`idusuario`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON UPDATE NO ACTION);
 
 
 -- -----------------------------------------------------
@@ -132,8 +107,6 @@ CREATE TABLE IF NOT EXISTS `siggma`.`evento` (
   `usuario_idusuario` INT NOT NULL,
   `chapa_idchapa` INT NOT NULL,
   PRIMARY KEY (`idevento`),
-  INDEX `fk_evento_usuario1_idx` (`usuario_idusuario` ASC) VISIBLE,
-  INDEX `fk_evento_chapa1_idx` (`chapa_idchapa` ASC) VISIBLE,
   CONSTRAINT `fk_evento_usuario1`
     FOREIGN KEY (`usuario_idusuario`)
     REFERENCES `siggma`.`usuario` (`idusuario`)
@@ -143,8 +116,7 @@ CREATE TABLE IF NOT EXISTS `siggma`.`evento` (
     FOREIGN KEY (`chapa_idchapa`)
     REFERENCES `siggma`.`chapa` (`idchapa`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON UPDATE NO ACTION);
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
