@@ -21,7 +21,18 @@ CREATE TABLE IF NOT EXISTS `siggma`.`usuario` (
     FOREIGN KEY (`tipoUsuario_id`)
     REFERENCES `siggma`.`tipoUsuario` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `siggma`.`eleicao`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `siggma`.`eleicao` (
+  `ideleicao` INT NOT NULL AUTO_INCREMENT,
+  `ano` INT NULL,
+  PRIMARY KEY (`ideleicao`));
+
 
 -- -----------------------------------------------------
 -- Table `siggma`.`chapa`
@@ -30,26 +41,6 @@ CREATE TABLE IF NOT EXISTS `siggma`.`chapa` (
   `idchapa` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NULL,
   PRIMARY KEY (`idchapa`));
-
-
--- -----------------------------------------------------
--- Table `siggma`.`voto`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `siggma`.`voto` (
-  `idvoto` INT NOT NULL AUTO_INCREMENT,
-  `chapa_idchapa` INT NOT NULL,
-  `usuario_idusuario` INT NOT NULL,
-  PRIMARY KEY (`idvoto`),
-  CONSTRAINT `fk_voto_chapa1`
-    FOREIGN KEY (`chapa_idchapa`)
-    REFERENCES `siggma`.`chapa` (`idchapa`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_voto_usuario1`
-    FOREIGN KEY (`usuario_idusuario`)
-    REFERENCES `siggma`.`usuario` (`idusuario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
 
 
 -- -----------------------------------------------------
@@ -113,3 +104,46 @@ CREATE TABLE IF NOT EXISTS `siggma`.`evento` (
     REFERENCES `siggma`.`chapa` (`idchapa`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+
+-- -----------------------------------------------------
+-- Table `siggma`.`chapa_has_eleicao`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `siggma`.`chapa_has_eleicao` (
+  `chapa_idchapa` INT NOT NULL,
+  `eleicao_ideleicao` INT NOT NULL,
+  `quantidade` INT NULL,
+  PRIMARY KEY (`chapa_idchapa`, `eleicao_ideleicao`),
+  CONSTRAINT `fk_chapa_has_eleicao_chapa1`
+    FOREIGN KEY (`chapa_idchapa`)
+    REFERENCES `siggma`.`chapa` (`idchapa`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_chapa_has_eleicao_eleicao1`
+    FOREIGN KEY (`eleicao_ideleicao`)
+    REFERENCES `siggma`.`eleicao` (`ideleicao`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+-- -----------------------------------------------------
+-- Table `siggma`.`usuario_has_chapa_has_eleicao`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `siggma`.`usuario_has_chapa_has_eleicao` (
+  `usuario_idusuario` INT NOT NULL,
+  `chapa_has_eleicao_chapa_idchapa` INT NOT NULL,
+  `chapa_has_eleicao_eleicao_ideleicao` INT NOT NULL,
+  `javotou` TINYINT(1) NULL DEFAULT 0,
+  PRIMARY KEY (`usuario_idusuario`, `chapa_has_eleicao_chapa_idchapa`, `chapa_has_eleicao_eleicao_ideleicao`),
+  CONSTRAINT `fk_usuario_has_chapa_has_eleicao_usuario1`
+    FOREIGN KEY (`usuario_idusuario`)
+    REFERENCES `siggma`.`usuario` (`idusuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_usuario_has_chapa_has_eleicao_chapa_has_eleicao1`
+    FOREIGN KEY (`chapa_has_eleicao_chapa_idchapa` , `chapa_has_eleicao_eleicao_ideleicao`)
+    REFERENCES `siggma`.`chapa_has_eleicao` (`chapa_idchapa` , `eleicao_ideleicao`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
