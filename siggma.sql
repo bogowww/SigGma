@@ -1,5 +1,4 @@
 
-
 -- -----------------------------------------------------
 -- Table `siggma`.`tipoUsuario`
 -- -----------------------------------------------------
@@ -7,8 +6,6 @@ CREATE TABLE IF NOT EXISTS `siggma`.`tipoUsuario` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `descricao` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
-
-
 
 -- -----------------------------------------------------
 -- Table `siggma`.`usuario`
@@ -25,7 +22,6 @@ CREATE TABLE IF NOT EXISTS `siggma`.`usuario` (
     REFERENCES `siggma`.`tipoUsuario` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
-
 
 -- -----------------------------------------------------
 -- Table `siggma`.`chapa`
@@ -117,8 +113,3 @@ CREATE TABLE IF NOT EXISTS `siggma`.`evento` (
     REFERENCES `siggma`.`chapa` (`idchapa`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
-
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
