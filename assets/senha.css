@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url('img/img.png') center center no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Remover a barra de rolagem */
+}
+
+.email-input-container {
+    background-color: white; /* Define a cor de fundo como branca */
+    padding: 40px;
+    border-radius: 0px;
+    text-align: center;
+    width: 900px;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.2);
+}
+
+.gotham {
+    font-family: "gotham", sans-serif;
+}
+
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input[type="email"] {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: #f6f6f6;
+    font-family: "gotham", sans-serif;
+}
+
+input[type="password"] {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: #f6f6f6;
+    font-family: "gotham", sans-serif;
+}
+
+
+input[type="text"] {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: #f6f6f6;
+    font-family: "gotham", sans-serif;
+}
+
+button[type="submit"] {
+    background-color: #01235c;
+    color: #fff;
+    border: none;
+    padding: 18px 110px;
+    cursor: pointer;
+    border-radius: 40px;
+    font-family: "Boron", sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+h1 {
+    font-family: "Boron", sans-serif;
+    color: #01235c;
+    font-size: 33px;
+    font-weight: 800;
+}
+
+h4 {
+    font-family: "Gotham", sans-serif;
+    font-size: 17px;
+    font-weight: normal;    
+}
+
+.olho{
+    position: absolute;
+    z-index:10;
+    top: 13px; right:0;
+    border:none;
+    background:transparent;
+    outline:none;
+}
+.submit-line {
+    position: relative;
+  }
