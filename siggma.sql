@@ -1,3 +1,7 @@
+-- -----------------------------------------------------
+-- Schema siggma
+-- -----------------------------------------------------
+CREATE SCHEMA siggma;
 
 -- -----------------------------------------------------
 -- Table `siggma`.`tipoUsuario`
@@ -15,6 +19,7 @@ CREATE TABLE IF NOT EXISTS `siggma`.`usuario` (
   `nome` VARCHAR(45) NULL,
   `matricula` INT NULL,
   `senha` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
   `tipoUsuario_id` INT NOT NULL,
   PRIMARY KEY (`idusuario`),
   CONSTRAINT `fk_usuario_tipoUsuario1`
@@ -47,6 +52,7 @@ CREATE TABLE IF NOT EXISTS `siggma`.`chapa` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+
 -- -----------------------------------------------------
 -- Table `siggma`.`cargo`
 -- -----------------------------------------------------
@@ -55,6 +61,7 @@ CREATE TABLE IF NOT EXISTS `siggma`.`cargo` (
   `nome` VARCHAR(45) NULL,
   `descricao` VARCHAR(455) NULL,
   PRIMARY KEY (`idcargo`));
+
 
 -- -----------------------------------------------------
 -- Table `siggma`.`membro`
