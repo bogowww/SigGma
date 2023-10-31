@@ -6,12 +6,14 @@ class Usuario {
     private $nome;
     private $matricula;
     private $senha;
+    private $email;
 
-    public function __construct($id, $nome, $matricula, $senha) {
+    public function __construct($id, $nome, $matricula, $senha, $email) {
         $this->id = $id;
         $this->nome = $nome;
         $this->matricula = $matricula;
         $this->senha = $senha;
+        $this->email = $email;
     }
 
     public function setId($id) {
@@ -46,12 +48,21 @@ class Usuario {
         return $this->senha;
     }
 
+    public function setEmail($email) {
+        $this->email = $email;
+    }
+
+    public function getEmail() {
+        return $this->email;
+    }
+
     public function inserir() {
-        $sql = "INSERT INTO usuario (nome, matricula, senha) VALUES (:nome, :matricula, :senha)";
+        $sql = "INSERT INTO usuario (nome, matricula, senha, email) VALUES (:nome, :matricula, :senha, :email)";
         $params = array(
             ':nome' => $this->nome,
             ':matricula' => $this->matricula,
             ':senha' => $this->senha,
+            ':email' => $this->email,
         );
         return BancoDeDados::executar($sql, $params);
     }
@@ -65,12 +76,13 @@ class Usuario {
     }
 
     public function editar() {
-        $sql = "UPDATE usuario SET nome = :nome, matricula = :matricula, senha = :senha WHERE idusuario = :id";
+        $sql = "UPDATE usuario SET nome = :nome, matricula = :matricula, senha = :senha, email = :email WHERE idusuario = :id";
         $params = array(
             ':id' => $this->id,
             ':nome' => $this->nome,
             ':matricula' => $this->matricula,
             ':senha' => $this->senha,
+            ':email' => $this->email,
         );
         return BancoDeDados::executar($sql, $params);
     }
@@ -80,4 +92,5 @@ class Usuario {
         return BancoDeDados::consultar($sql);
     }
 }
+
 ?>
