@@ -1,13 +1,17 @@
 <?php
-abstract class Usuario {
+require_once('database.php');
+
+class Usuario {
     private $id;
     private $nome;
     private $matricula;
+    private $senha;
 
-    public function __construct($id, $nome, $matricula) {
+    public function __construct($id, $nome, $matricula, $senha) {
         $this->id = $id;
         $this->nome = $nome;
         $this->matricula = $matricula;
+        $this->senha = $senha;
     }
 
     public function setId($id) {
@@ -34,16 +38,46 @@ abstract class Usuario {
         return $this->matricula;
     }
 
-    /*public function salvar() {
-        $sql = "INSERT INTO usuario (nome, matricula) VALUES (:nome, :matricula)";
+    public function setSenha($senha) {
+        $this->senha = $senha;
+    }
+
+    public function getSenha() {
+        return $this->senha;
+    }
+
+    public function inserir() {
+        $sql = "INSERT INTO usuario (nome, matricula, senha) VALUES (:nome, :matricula, :senha)";
         $params = array(
             ':nome' => $this->nome,
             ':matricula' => $this->matricula,
+            ':senha' => $this->senha,
         );
         return BancoDeDados::executar($sql, $params);
-    }*/
+    }
 
+    public function excluir() {
+        $sql = "DELETE FROM usuario WHERE idusuario = :id";
+        $params = array(
+            ':id' => $this->id,
+        );
+        return BancoDeDados::executar($sql, $params);
+    }
 
+    public function editar() {
+        $sql = "UPDATE usuario SET nome = :nome, matricula = :matricula, senha = :senha WHERE idusuario = :id";
+        $params = array(
+            ':id' => $this->id,
+            ':nome' => $this->nome,
+            ':matricula' => $this->matricula,
+            ':senha' => $this->senha,
+        );
+        return BancoDeDados::executar($sql, $params);
+    }
+
+    public static function listar() {
+        $sql = "SELECT * FROM usuario";
+        return BancoDeDados::consultar($sql);
+    }
 }
-
 ?>
