@@ -1,3 +1,31 @@
+<?php
+require_once('classes/usuario.class.php');
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nome = $_POST['nome'];
+    $matricula = $_POST['matricula'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $confirmacao_senha = $_POST['confirmacao_senha'];
+
+    if ($senha === $confirmacao_senha) {
+        $novoUsuario = new Usuario(null, $nome, $matricula, $senha, $email);
+
+        $inserido = $novoUsuario->inserir();
+
+        if ($inserido) {
+            header('Location: login.php');
+            exit();
+        } else {
+            header('Location: cadastro.php?error=1');
+            exit();
+        }
+    } else {
+        header('Location: cadastro.php?error=2');
+        exit();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,19 +44,19 @@
                 <div class="d-flex justify-content-center">
                     <form action="" method="post">
                         <div class="mb-4">
-                            <input class="form-control input" type="text" id="nome" placeholder="Nome de usuário">
+                            <input class="form-control input" type="text" id="nome" name="nome" placeholder="Nome de usuário">
                         </div>
                         <div class="mb-4">
-                            <input class="form-control input" type="text" id="matricula" placeholder="Número de matrícula">
+                            <input class="form-control input" type="text" id="matricula" name="matricula"  placeholder="Número de matrícula">
                         </div>
                         <div class="mb-4">
-                            <input class="form-control input" type="email" id="email" placeholder="Endereço de e-mail">
+                            <input class="form-control input" type="email" id="email" name="email" placeholder="Endereço de e-mail">
                         </div>
                         <div class="mb-4">
-                            <input class="form-control input" type="password" id="senha"  placeholder="Senha">
+                            <input class="form-control input" type="password" id="senha"  name="senha"  placeholder="Senha">
                         </div>
                         <div class="mb-4">
-                            <input class="form-control input" type="password" id="confirmacao_senha"  placeholder="Repita sua senha">
+                            <input class="form-control input" type="password" id="confirmacao_senha"  name="confirmacao_senha"  placeholder="Repita sua senha">
                         </div>
                         <div class="mb-4">
                             <input type="checkbox" class="" name="lembrar_senha" id="lembrar_senha">
@@ -38,7 +66,7 @@
                             <button class="button">Entrar</button>
                         </div>
                         <div class="d-flex justify-content-center mt-4">
-                            <p>Já tem conta? <a href="login.html">Clique aqui para fazer login.</a></p>
+                            <p>Já tem conta? <a href="login.php">Clique aqui para fazer login.</a></p>
                         </div>
                     </form>
                 </div>
