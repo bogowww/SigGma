@@ -1,5 +1,5 @@
 <?php
-require_once('database.php');
+require_once('database.class.php');
 
 class Evento {
     private $id;
@@ -42,7 +42,7 @@ class Evento {
             ':nome' => $this->nome,
             ':data' => $this->data,
         );
-        return BancoDeDados::executar($sql, $params);
+        return Database::executar($sql, $params);
     }
 
     public function excluir() {
@@ -50,7 +50,7 @@ class Evento {
         $params = array(
             ':id' => $this->id,
         );
-        return BancoDeDados::executar($sql, $params);
+        return Database::executar($sql, $params);
     }
 
     public function editar() {
@@ -60,12 +60,12 @@ class Evento {
             ':nome' => $this->nome,
             ':data' => $this->data,
         );
-        return BancoDeDados::executar($sql, $params);
+        return Database::executar($sql, $params);
     }
 
     public static function listar() {
         $sql = "SELECT * FROM evento";
-        return BancoDeDados::consultar($sql);
+        return Database::executar($sql);
     }
 
     public function card() {
