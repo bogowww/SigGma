@@ -64,7 +64,7 @@ class Usuario {
             ':senha' => $this->senha,
             ':email' => $this->email,
         );
-        return BancoDeDados::executar($sql, $params);
+        return Database::executar($sql, $params);
     }
 
     public function excluir() {
@@ -72,7 +72,7 @@ class Usuario {
         $params = array(
             ':id' => $this->id,
         );
-        return BancoDeDados::executar($sql, $params);
+        return Database::executar($sql, $params);
     }
 
     public function editar() {
@@ -84,12 +84,12 @@ class Usuario {
             ':senha' => $this->senha,
             ':email' => $this->email,
         );
-        return BancoDeDados::executar($sql, $params);
+        return Database::executar($sql, $params);
     }
 
     public static function listar() {
         $sql = "SELECT * FROM usuario";
-        return BancoDeDados::consultar($sql);
+        return Database::executar($sql);
     }
 }
 
