@@ -1,35 +1,22 @@
 <?php
-    class Database {
-        public static function conectar(){
-            try{
-                require_once(__DIR__ . '../config/config.inc.php');
-                $conexao = new PDO(MYSQL_DSN,MYSQL_USUARIO,MYSQL_SENHA );
-                return $conexao;
-            }catch(PDOException $e){
-                echo "Erro ao conectar com o banco de dados. Verifique os parâmetros de configuração.";
-            }
-        }
+    require_once('database.class.php');
+    abstract class Crud{
 
-        public static function executar($sql,$params = array()){
-            $conexao = self::conectar();
-            $comando = self::preparar($conexao, $sql, $params);
-            return $comando->execute();
-        }
+        private $id = 0;    // int
+
+        public function __construct($pid){
+            $this->setId($pid);
+        }        
         
-        public static function listar($sql,$params){
-            $conexao = self::conectar();
-            $comando = self::preparar($conexao, $sql, $params);
-            if ($comando->execute())
-                return $comando->fetchAll();
+        public function getId(){
+            return $this->id;
         }
+        public function setId($id){
+            $this->id = $id;
+        }       
 
-        public static function preparar($conexao, $sql, $params = array()){
-            // ":lado"=>"12"
-            $comando = $conexao->prepare($sql);
-            foreach($params as $chave=>$valor){
-                $comando->bindValue($chave,$valor);
-            }
-            return $comando;
-        }
+        public abstract function inserir();
+        public abstract function excluir();
+        public abstract function editar();
     }
 ?>
