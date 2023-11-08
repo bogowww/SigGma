@@ -1,5 +1,5 @@
 <?php
-require_once('database.php');
+require_once('database.class.php');
 
 class Evento {
     private $id;
