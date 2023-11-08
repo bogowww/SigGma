@@ -12,6 +12,7 @@
             background: url('img/img.png') center repeat;
             background-size: 100%;
             background-attachment: fixed;
+            vertical-align: middle;
         }
     </style>
 </head>

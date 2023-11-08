@@ -103,3 +103,9 @@ h4 {
 .submit-line {
     position: relative;
   }
+
+  body {
+    background: url('img/img.png') center repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+}
