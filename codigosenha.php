@@ -9,7 +9,7 @@
     <title>Esqueci Minha Senha</title>
     <style>
         body {
-            background: url('img/img.png') center repeat;
+            background: url('assets/img/img.png') center repeat;
             background-size: 100%;
             background-attachment: fixed;
         }
