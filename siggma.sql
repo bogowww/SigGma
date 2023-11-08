@@ -12,7 +12,6 @@ CREATE TABLE IF NOT EXISTS `siggma`.`usuario` (
   `matricula` INT NULL,
   `senha` VARCHAR(45) NULL,
   `email` VARCHAR(45) NULL,
-  `tipoUsuario_id` INT NOT NULL,
   PRIMARY KEY (`idusuario`));
 
 -- -----------------------------------------------------
