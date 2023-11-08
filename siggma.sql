@@ -4,14 +4,6 @@
 CREATE SCHEMA siggma;
 
 -- -----------------------------------------------------
--- Table `siggma`.`tipoUsuario`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `siggma`.`tipoUsuario` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `descricao` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`));
-
--- -----------------------------------------------------
 -- Table `siggma`.`usuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `siggma`.`usuario` (
@@ -21,12 +13,7 @@ CREATE TABLE IF NOT EXISTS `siggma`.`usuario` (
   `senha` VARCHAR(45) NULL,
   `email` VARCHAR(45) NULL,
   `tipoUsuario_id` INT NOT NULL,
-  PRIMARY KEY (`idusuario`),
-  CONSTRAINT `fk_usuario_tipoUsuario1`
-    FOREIGN KEY (`tipoUsuario_id`)
-    REFERENCES `siggma`.`tipoUsuario` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+  PRIMARY KEY (`idusuario`));
 
 -- -----------------------------------------------------
 -- Table `siggma`.`eleicao`
