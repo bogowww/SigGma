@@ -2,21 +2,19 @@
 require_once('classes/usuario.class.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $nome = $_POST['nome'];
+    $senha = $_POST['senha'];
 
-    $usuarios = Usuario::listar();
-
-
-    var_dump($_POST);
+    $usuarios = Usuario::listar(2, $nome);
+    //var_dump($usuarios);
     foreach ($usuarios as $usuario) {
-        if ($usuario['nome'] === $username && $usuario['senha'] === $password) {
+        if ($usuario && $usuario->verificarSenha($senha)) {
             header('Location: chapa.php');
             exit();
+        } else {
+            $erro = "Credenciais inválidas. Tente novamente.";
         }
     }
-    header('Location: login.php?error=1');
-    exit();
 }
 ?>
 <!DOCTYPE html>
@@ -35,12 +33,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="col-md-6 col-sm-12">
                 <h2 class="text-center" id="spaceTitle">Entre na sua conta</h2>
                 <div class="d-flex justify-content-center">
+                    <br>
                     <form action="login.php" method="post">
                         <div class="mb-4">
-                            <input class="form-control" type="text" id="input" name="username" placeholder="Nome de usuário">
+                            <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome de usuário">
                         </div>
                         <div class="mb-3">
-                            <input class="form-control" type="password" id="input" name="password" placeholder="Senha">
+                            <input class="form-control" type="password" id="senha" name="senha" placeholder="Senha">
                         </div>
                         <div class="d-flex justify-content-end mb-5">
                             <a href="senha.php">Esqueci a senha</a>
@@ -53,6 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                     </form>
                 </div>
+                <?php if (isset($erro)): ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo $erro; ?>
+                        </div>
+                    <?php endif; ?>
             </div>
             <div class="col-md-6 d-none d-md-block imagem">
             </div>
