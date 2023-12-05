@@ -87,10 +87,43 @@ class Usuario {
         return Database::executar($sql, $params);
     }
 
-    public static function listar() {
-        $sql = "SELECT * FROM usuario";
-        return Database::executar($sql);
+    public static function listar($type = 0, $info = '') {
+        $sql = 'SELECT * FROM usuario';
+        switch ($type) {
+            case 1:
+                $sql .= ' WHERE idusuario = :info';
+                break;
+            case 2:
+                $sql .= ' WHERE nome = :info';
+                break;
+        }
+        $params = array();
+        if ($type > 0)
+            $params = array(':info' => $info);
+    
+        $results = Database::listar($sql, $params);
+       
+        // var_dump($results);
+    
+        if (is_array($results)) {
+            if ($type == 1 && !empty($results)) {
+                $result = $results[0];
+                return new Usuario($result['idusuario'], $result['nome'], $result['matricula'], $result['senha'], $result['email']);
+            }
+    
+            $usuarios = array();
+            foreach ($results as $result) {
+                $usuario = new Usuario($result['idusuario'], $result['nome'], $result['matricula'], $result['senha'], $result['email']);
+                $usuarios[] = $usuario;
+            }
+            return $usuarios;
+        } else {
+            return array();
+        }
     }
+    public function verificarSenha($senha) {
+        return $senha === $this->senha;
+    }
+ 
 }
-
 ?>
