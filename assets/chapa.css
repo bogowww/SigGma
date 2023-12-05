@@ -2,42 +2,34 @@
     background-color: #ffffff;
     padding: 20px;
     text-align: center;
-    position: relative;
-    top: 890px; /* Ajuste a distância a partir do topo conforme necessário */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Adicione sombra ao contêiner */
-    max-width: 1800px; /* Defina a largura máxima desejada */
-    max-height: 870px; /* Defina a altura máxima desejada */
-    margin: 0 auto; /* Centraliza o container horizontalmente na página */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 90%;  
+    max-width: 100%;
+    margin: 60px auto 0; 
+    z-index: 1; 
 }
-
 
 
 body {
-    background-color: #F9FAFB; /* Define a cor de fundo da página */
-    
+    background-color: #F9FAFB;
 }
-
 
 .h1 {
     font-family: "Boron", sans-serif;
     color: #01235c;
     font-size: 33px;
-    font-weight: 790;
-
+    font-weight: 700; 
 }
-
 
 .square-container {
     background-color: #ffffff;
     border: 2px solid #A6A6A6;
-    height: 30vw;
-   height: 20vw; /* Reduz a altura para 50% da altura atual */
+    height: auto;
     align-content: center;
     justify-content: center;
-    padding: 80px;
+    padding: 5%;
     display: flex;
-    
-
+    flex-direction: column;
 }
 
 .square-content {
@@ -46,13 +38,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-
 }
 
-
-.texto{
-
+.texto {
     font-family: "Open Sauce Sans Regular", sans-serif;
     color: #000000;
     font-size: 20px;
@@ -63,28 +51,34 @@ body {
     font-family: "Boron", sans-serif;
     color: #000000;
     font-size: 33px;
-    font-weight: 790;
+    font-weight: 700;
 }
 
 .button {
     background-color: #01235c;
     color: #fff;
     border: none;
-    padding: 18px 110px;
+    padding: 18px 10%;
     border-radius: 40px;
     font-family: "Now", sans-serif;
-    font-weight: 800;
-    position: relative;
-    bottom: 20px;
-    right: -750px;
+    font-weight: 700; 
     font-size: 20px;
 }
 
-
-.text{
+.text {
     font-family: 'Literata';
     font-size: 25px;
-    position: relative;
-    left: -610px;
-    top: 70px;
+    text-align:left;
+    margin: 40px auto 0;
+
+    
+}
+
+
+.texto-fora-container {
+    text-align: right;
+    width: 90%;
+    max-width: 100%;
+    margin: -40px auto 0;
+    
 }

@@ -1,0 +1,48 @@
+.modal-xl {
+    max-width: 90% !important; /* Ajuste a largura conforme necessário */
+    max-height: 80vh !important; /* Ajuste a altura conforme necessário */
+}
+
+.modal-content {
+    background-color: #fff; /* Cor de fundo do modal */
+    display: flex; /* Torna o conteúdo do modal flexível */
+}
+
+/* Estilo para os contêineres dentro do modal */
+.container {
+    flex: 1; /* Faz com que os contêineres ocupem a largura disponível igualmente */
+    padding: 20px; /* Espaçamento interno */
+    margin-right: 20px; /* Espaçamento entre os contêineres */
+    border: 1px solid #ccc; /* Borda para separar os contêineres */
+    border-radius: 100px; /* Borda arredondada */
+}
+
+.square-container {
+    background-color: #ffffff;
+    border: 5px solid #A6A6A6;
+    height: auto;
+    align-content: center;
+    justify-content: center;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+.square-content {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fontc{
+
+    font-family: "Open Sauce Sans Regular", 'sans-serif Regular';
+}
+
+.fontchapa{
+
+     font-family: 'Baron Regular', sans-serif;
+    
+}
