@@ -1,0 +1,58 @@
+@import url('https://fonts.cdnfonts.com/css/baron-neue');
+@media (min-width: 768px) {
+    .input{
+        background-color: #F6F6F6;
+        border-color: rgb(0, 0, 0,0);
+        border-radius: 4vh; 
+        height: 6.8vh;
+        width: 40vw;           
+    }          
+    #spaceTitleLogin{
+        padding-top: 10vh;
+        padding: 10vh;
+    }
+    #spaceTitleCadastro{
+        padding: 5vh;
+    }
+    #space{
+        padding-top: 6vh;
+    }
+}
+
+@media (max-width: 767px) and (min-width: 0px){
+    #spaceTitle{
+        padding-top: 6vh;
+        padding: 6vh;
+    }
+}
+.button{
+    border-radius: 2vw;
+    border: none;
+    font-family: 'Baron Neue bold', sans-serif; 
+    font-weight: bold;
+    background-color: #01235C;
+    text-align: center;
+    color: white;     
+    height: 6vh;      
+}
+.imagem{
+    height: 53vw;
+    background-size: cover;
+    background-image: url(../img/paulo.png);
+    box-shadow: 5px 0px 10px 10px rgb(0, 0, 0, 0.2);
+}
+
+        #input{
+            background-color: #F6F6F6;
+            border-color: rgb(0, 0, 0,0);
+            border-radius: 4vh;        
+        }       
+        
+
+
+        h2{
+            font-family: 'Baron Neue bold', sans-serif;
+            font-weight: bold;
+            color: #01235C;
+        }
+        
