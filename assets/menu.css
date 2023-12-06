@@ -1,3 +1,4 @@
+/* Remove as regras desnecessárias para o menu responsivo */
 .menu-item {
     list-style-type: none;
     margin: 0;
@@ -7,42 +8,47 @@
     float: left;
     font-family: 'Literata';
     font-size: 20px;
-    
 }
 
 .menu-item a {
     display: block;
-    color: black;   
+    color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 .menu-item img {
-    height: 30px; /* Defina a altura desejada para o ícone */
-    margin-right: 5px; /* Espaço entre o ícone e o texto */
+    height: 30px;
+    margin-right: 5px;
 }
 
-.font{
-
-    font-family: 'Literata';font-size: 22px;
+.font {
+    font-family: 'Literata';
+    font-size: 22px;
 }
 
 .navbar {
-    background-color: white; /* Define a cor de fundo do menu como branco */
+    background-color: white;
     position: fixed;
     width: 100%;
     top: 0;
-     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
 }
 
 .menu-item img {
-    height: 60px; /* Aumente a altura da imagem */
-    margin-right: 40px; /* Aumente o espaço entre a imagem e o texto */
+    height: 60px;
+    margin-right: 40px;
     margin-left: 40px;
 }
 
+.nav-item {
+    margin-right: 30px;
+}
 
-        .nav-item {
-            margin-right: 30px; /* Adicione espaço entre as opções do menu */
-        }
+.image-below-menu {
+    width: 100%;
+    max-width: 100%;
+    height: 600px;
+    margin-top: 10px;
+}
