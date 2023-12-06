@@ -12,15 +12,15 @@
 
 .menu-item a {
     display: block;
-    color: black;
+    color: black;   
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 .menu-item img {
-    height: 30px;
-    margin-right: 5px;
+    height: 30px; /* Defina a altura desejada para o ícone */
+    margin-right: 5px; /* Espaço entre o ícone e o texto */
 }
 
 .font{
@@ -29,7 +29,7 @@
 }
 
 .navbar {
-    background-color: white;
+    background-color: white; /* Define a cor de fundo do menu como branco */
     position: fixed;
     width: 100%;
     top: 0;
@@ -37,21 +37,12 @@
 }
 
 .menu-item img {
-    height: 60px;
-    margin-right: 40px;
+    height: 60px; /* Aumente a altura da imagem */
+    margin-right: 40px; /* Aumente o espaço entre a imagem e o texto */
     margin-left: 40px;
 }
 
 
         .nav-item {
-            margin-right: 30px;
+            margin-right: 30px; /* Adicione espaço entre as opções do menu */
         }
-
-        .image-below-menu {
-            position:absolute;
-            bottom: 1;
-            width: 100%;
-            z-index: -1;
-        }
-
-     
